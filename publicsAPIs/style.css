@@ -1,69 +1,196 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    text-align: center;
-    padding: 20px;
+/* Reset básico para garantir que todos os navegadores tenham um estilo consistente */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Corpo e fundo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a3c7f0, #f3f7f9); /* Gradiente suave para o fundo */
+    color: #333;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajustado para garantir que o conteúdo tenha espaço para rolar */
+    height: auto; /* Removido 100vh, agora o corpo vai ocupar a altura do conteúdo */
+    overflow-y: auto; /* Permite rolagem vertical */
+    transition: background 0.3s ease-in-out; /* Transição suave para troca de fundo */
+}
+
+/* Container centralizado */
 .container {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
+    max-width: 900px;
     width: 100%;
-    margin: 20px auto;
-    transition: transform 0.3s;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Suaviza o movimento do container */
+    margin-top: 20px; /* Adicionado para dar um espaçamento superior */
 }
 
-.container:hover {
-    transform: scale(1.02);
-}
-
+/* Título principal */
 h1 {
-    color: #4a4e69;
-    font-weight: bold;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.form-group {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Títulos das seções */
+h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: capitalize;
 }
 
+/* Botões */
 button {
-    background: #ff758f;
+    background-color: #3498db;
     color: white;
     border: none;
-    padding: 12px 18px;
-    font-size: 16px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
     cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.3s, transform 0.2s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 350px;
+    margin: 15px auto;
+    display: block;
 }
 
 button:hover {
-    background: #ff3d68;
-    transform: scale(1.05);
+    background-color: #2980b9;
+    transform: scale(1.05); /* Aumenta suavemente o botão ao passar o mouse */
 }
 
-img {
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+/* Campos de pesquisa */
+input[type="text"] {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ecf0f1;
+    border-radius: 25px;
+    margin: 15px auto;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-#random-dog-result, #random-cat-result {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.9);
+input[type="text"]:focus {
+    box-shadow: 0 4px 10px rgba(0, 120, 255, 0.5); /* Aumenta o efeito da sombra quando o campo é focado */
+}
+
+/* Estilo das informações exibidas */
+#random-dog-result, #cat-breed-result, #dog-breed-result {
+    background-color: #ecf0f1;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards; /* Animação suave para exibir as informações */
+}
+
+/* Animação para exibir as informações suavemente */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Estilo das imagens */
+#random-dog-result img,
+#cat-breed-result img,
+#dog-breed-result img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#random-dog-result img:hover,
+#cat-breed-result img:hover,
+#dog-breed-result img:hover {
+    transform: scale(1.05); /* Efeito de zoom suave na imagem ao passar o mouse */
+}
+
+/* Textos */
+h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* Estilos para o formulário de busca */
+.form-group {
+    margin-bottom: 40px;
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button, input[type="text"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    #random-dog-result, #cat-breed-result, #dog-breed-result {
+        padding: 20px;
+    }
+
+    #random-dog-result img,
+    #cat-breed-result img,
+    #dog-breed-result img {
+        max-width: 100%;
+    }
 }
