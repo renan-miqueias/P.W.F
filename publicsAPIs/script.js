@@ -3,25 +3,30 @@ const catApiKey = 'sua-chave-thecatapi'; // Insira sua chave de API da TheCatAPI
 
 // Função para obter uma imagem aleatória de cachorro
 async function getRandomDog() {
-    const url = `https://dog.ceo/api/breeds/image/random`;
-    
+    const url = 'https://dog.ceo/api/breeds/image/random';
+
     try {
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (data.status === 'success') {
             const dogImage = data.message;
-            document.getElementById('random-dog-result').innerHTML = `<img src="${dogImage}" alt="Cachorro Aleatório">`;
+            document.getElementById('random-dog-result').innerHTML = `
+                <h3>Imagem de Cachorro Aleatório</h3>
+                <img src="${dogImage}" alt="Cachorro Aleatório">
+            `;
+        } else {
+            throw new Error('Erro ao obter a imagem do cachorro');
         }
     } catch (error) {
         document.getElementById('random-dog-result').innerHTML = 'Erro ao consultar imagem de cachorro.';
     }
 }
 
-// Função para obter uma raça aleatória de gato com algumas informações
+// Função para obter informações aleatórias sobre gato
 async function getRandomCat() {
-    const url = `https://api.thecatapi.com/v1/breeds`;
-    
+    const url = 'https://api.thecatapi.com/v1/breeds';
+
     try {
         const response = await fetch(url, {
             headers: {
@@ -29,26 +34,19 @@ async function getRandomCat() {
             }
         });
         const data = await response.json();
-        
+
         if (data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const breed = data[randomIndex];
-            
-            const imgResponse = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breed.id}`, {
-                headers: {
-                    'x-api-key': catApiKey
-                }
-            });
-            const imgData = await imgResponse.json();
-            
-            const catImage = imgData.length > 0 ? imgData[0].url : '';
-            
+            const randomIndex = Math.floor(Math.random() * data.length); // Seleção aleatória
+            const breed = data[randomIndex]; // Seleção aleatória da raça
+
             document.getElementById('random-cat-result').innerHTML = `
-                <h3>${breed.name}</h3>
+                <h3>Raça Aleatória de Gato</h3>
+                <p><strong>Nome:</strong> ${breed.name}</p>
                 <p><strong>Origem:</strong> ${breed.origin}</p>
                 <p><strong>Temperamento:</strong> ${breed.temperament}</p>
-                ${catImage ? `<img src="${catImage}" alt="${breed.name}" width="300">` : ''}
             `;
+        } else {
+            throw new Error('Erro ao obter informações da raça do gato');
         }
     } catch (error) {
         document.getElementById('random-cat-result').innerHTML = 'Erro ao consultar informações sobre gatos.';
