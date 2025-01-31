@@ -19,12 +19,23 @@
             </div>
         </div>
 
-        <!-- Raça aleatória de gato -->
+        <!-- Pesquisa de raça de cachorro -->
         <div class="form-group">
-            <h2>Raça Aleatória de Gato</h2>
-            <button onclick="getRandomCat()">Obter Raça Aleatória</button>
-            <div id="random-cat-result">
-                <p>Aqui aparecerão as informações de uma raça aleatória!</p>
+            <h2>Pesquisar Raça de Cachorro</h2>
+            <input type="text" id="dog-breed-name" placeholder="Digite a raça do cachorro" />
+            <button onclick="searchDogBreed()">Buscar Raça de Cachorro</button>
+            <div id="dog-breed-result">
+                <p>Aqui aparecerão as informações da raça de cachorro pesquisada!</p>
+            </div>
+        </div>
+
+        <!-- Pesquisa de raça de gato -->
+        <div class="form-group">
+            <h2>Pesquisar Raça de Gato</h2>
+            <input type="text" id="breed-name" placeholder="Digite a raça do gato" />
+            <button onclick="searchCatBreed()">Buscar Raça de Gato</button>
+            <div id="cat-breed-result">
+                <p>Aqui aparecerão as informações da raça de gato pesquisada!</p>
             </div>
         </div>
     </div>
