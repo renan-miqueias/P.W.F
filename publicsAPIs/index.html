@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raças de Cachorros e Gatos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta de Raças de Cachorros e Gatos</h1>
+
+        <!-- Raça aleatória de cachorro -->
+        <div class="form-group">
+            <h2>Raça Aleatória de Cachorro</h2>
+            <button onclick="getRandomDog()">Obter Raça Aleatória</button>
+            <div id="random-dog-result">
+                <p>Aqui aparecerá a imagem de uma raça aleatória!</p>
+            </div>
+        </div>
+
+        <!-- Raça aleatória de gato -->
+        <div class="form-group">
+            <h2>Raça Aleatória de Gato</h2>
+            <button onclick="getRandomCat()">Obter Raça Aleatória</button>
+            <div id="random-cat-result">
+                <p>Aqui aparecerão as informações de uma raça aleatória!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
